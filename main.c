@@ -43,11 +43,10 @@ int main(int argc, const char * argv[]) {
 }
 
 int PrimeRecursive(int n, int d) {
+    //Numbers lesser or equal to 1 are not prime
+    if (n <= 1) { return FALSE;}
+    
     switch (n) {
-                    //1 is not prime
-        case 1:     return FALSE;
-                    break;
-            
                     //2 is the only one even number to be prime
         case 2:     return TRUE;
                     break;
@@ -68,11 +67,10 @@ int PrimeRecursive(int n, int d) {
 }
 
 int PrimeIterative(int n) {
+    //Numbers lesser or equal to 1 are not prime
+    if (n <= 1) { return FALSE;}
+    
     switch (n) {
-                    //1 is not prime
-        case 1:     return FALSE;
-                    break;
-            
                     //2 is the only one even number to be prime
         case 2:     return TRUE;
                     break;
@@ -102,6 +100,11 @@ int PrimeIterative(int n) {
 void PrimeTest() {
     int n ;
     //Test limit values
+    n = -7;
+    printf("\nTest if %2i is NOT PRIME : ", n);
+    if (PrimeRecursive(n, n - 1) == FALSE) { printf("PASS"); }
+    else { printf("FAIL"); }
+    
     n = 0;
     printf("\nTest if %2i is NOT PRIME : ", n);
     if (PrimeRecursive(n, n - 1) == FALSE) { printf("PASS"); }
