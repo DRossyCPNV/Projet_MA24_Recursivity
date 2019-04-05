@@ -12,6 +12,7 @@
 //Prototypes
 int PrimeRecursive(int n, int d);
 int PrimeIterative(int n);
+void PrimeTest();
 
 int main(int argc, const char * argv[]) {
 
@@ -19,13 +20,13 @@ int main(int argc, const char * argv[]) {
 
     //Title
     printf("OPTIMUS PRIME ?\n");
-    printf("===============\n\n");
+    printf("===============\n");
     
-    //Tests (soon)
-    // 0 1 2, any, negative number
+    //Tests
+    PrimeTest();
     
     //Ask a number to user
-    printf("Prime property of N = ");
+    printf("\n\nPrime property of N = ");
     scanf("%i", &n);
     
     //Test if n is prime with recursivity function
@@ -96,4 +97,34 @@ int PrimeIterative(int n) {
                     }
                     break;
     }
+}
+
+void PrimeTest() {
+    int n ;
+    //Test limit values
+    n = 0;
+    printf("\nTest if %2i is NOT PRIME : ", n);
+    if (PrimeRecursive(n, n - 1) == FALSE) { printf("PASS"); }
+    else { printf("FAIL"); }
+    
+    n = 1;
+    printf("\nTest if %2i is NOT PRIME : ", n);
+    if (PrimeRecursive(n, n - 1) == FALSE) { printf("PASS"); }
+    else { printf("FAIL"); }
+    
+    n = 2;
+    printf("\nTest if %2i is PRIME     : ", n);
+    if (PrimeRecursive(n, n - 1) == TRUE) { printf("PASS"); }
+    else { printf("FAIL"); }
+    
+    //Test any value
+    n = 96;
+    printf("\nTest if %2i is NOT PRIME : ", n);
+    if (PrimeRecursive(n, n - 1) == FALSE) { printf("PASS"); }
+    else { printf("FAIL"); }
+    
+    n = 97;
+    printf("\nTest if %2i is PRIME     : ", n);
+    if (PrimeRecursive(n, n - 1) == TRUE) { printf("PASS"); }
+    else { printf("FAIL"); }
 }
