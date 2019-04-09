@@ -1,8 +1,9 @@
 //  PrimeNumber
 //
+//  Computes the prime property of a number
+//
 //  Created by David Rossy on 04.04.19.
 //  Copyright © 2019 David_Rossy. All rights reserved.
-//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,6 +14,7 @@
 int PrimeRecursive(int n, int d);
 int PrimeIterative(int n);
 void PrimeTest();
+void DialogPrimeTest(int n, int primeBooleanValue);
 
 int main(int argc, const char * argv[]) {
 
@@ -42,6 +44,13 @@ int main(int argc, const char * argv[]) {
     return EXIT_SUCCESS;
 }
 
+/**
+ Determines recursively if a number "n" is prime or not
+
+ @param n number we want to determine the prime property
+ @param d dividor
+ @return  TRUE(1) if n is prime or FALSE(0) if it is not
+ */
 int PrimeRecursive(int n, int d) {
     //Numbers lesser or equal to 1 are not prime
     if (n <= 1) { return FALSE;}
@@ -66,6 +75,12 @@ int PrimeRecursive(int n, int d) {
     }
 }
 
+/**
+ Determines iteratively if a number "n" is prime or not
+
+ @param n number we want to determine the prime property
+ @return TRUE(1) if n is prime or FALSE(0) if it is not
+ */
 int PrimeIterative(int n) {
     //Numbers lesser or equal to 1 are not prime
     if (n <= 1) { return FALSE;}
@@ -98,36 +113,30 @@ int PrimeIterative(int n) {
 }
 
 void PrimeTest() {
-    int n ;
     //Test limit values
-    n = -7;
-    printf("\nTest if %2i is NOT PRIME : ", n);
-    if (PrimeRecursive(n, n - 1) == FALSE) { printf("PASS"); }
-    else { printf("FAIL"); }
-    
-    n = 0;
-    printf("\nTest if %2i is NOT PRIME : ", n);
-    if (PrimeRecursive(n, n - 1) == FALSE) { printf("PASS"); }
-    else { printf("FAIL"); }
-    
-    n = 1;
-    printf("\nTest if %2i is NOT PRIME : ", n);
-    if (PrimeRecursive(n, n - 1) == FALSE) { printf("PASS"); }
-    else { printf("FAIL"); }
-    
-    n = 2;
-    printf("\nTest if %2i is PRIME     : ", n);
-    if (PrimeRecursive(n, n - 1) == TRUE) { printf("PASS"); }
-    else { printf("FAIL"); }
+    DialogPrimeTest(-7, FALSE);
+    DialogPrimeTest(0, FALSE);
+    DialogPrimeTest(1, FALSE);
+    DialogPrimeTest(2, TRUE);
     
     //Test any value
-    n = 96;
-    printf("\nTest if %2i is NOT PRIME : ", n);
-    if (PrimeRecursive(n, n - 1) == FALSE) { printf("PASS"); }
-    else { printf("FAIL"); }
-    
-    n = 97;
-    printf("\nTest if %2i is PRIME     : ", n);
-    if (PrimeRecursive(n, n - 1) == TRUE) { printf("PASS"); }
-    else { printf("FAIL"); }
+    DialogPrimeTest(96, FALSE);
+    DialogPrimeTest(97, TRUE);
+}
+
+/**
+ Compares the prime property expected of a number "n" with the one returned by the PrimeRecursive function
+
+ @param n number we want to test and know the prime property
+ @param primeBooleanValue TRUE(1) if n is prime or FALSE(0) if it is not
+ */
+void DialogPrimeTest(int n, int primeBooleanValue) {
+    if (primeBooleanValue) {
+        printf("\nTests if %2i is PRIME     : ", n);
+    }
+    else {
+        printf("\nTests if %2i is NOT PRIME : ", n);
+    }
+        if (PrimeRecursive(n, n - 1) == primeBooleanValue) { printf("PASS"); }
+        else { printf("FAIL"); }
 }
